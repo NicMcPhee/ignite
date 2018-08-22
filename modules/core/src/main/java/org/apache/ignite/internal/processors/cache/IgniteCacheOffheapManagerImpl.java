@@ -252,7 +252,7 @@ public class IgniteCacheOffheapManagerImpl implements IgniteCacheOffheapManager 
      * @param part Partition.
      * @return Data store for given entry.
      */
-    public CacheDataStore dataStore(GridDhtLocalPartition part) {
+    @Override public CacheDataStore dataStore(GridDhtLocalPartition part) {
         if (grp.isLocal())
             return locCacheDataStore;
         else {
