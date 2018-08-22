@@ -67,33 +67,33 @@ public class IgnitePdsTestSuite extends TestSuite {
         TestSuite suite = new TestSuite("Ignite Persistent Store Test Suite");
 
         addRealPageStoreTests(suite);
-        addRealPageStoreTestsLongRunning(suite);
+//        addRealPageStoreTestsLongRunning(suite);
 
         // Basic PageMemory tests.
         //suite.addTestSuite(PageMemoryNoLoadSelfTest.class);
-        suite.addTestSuite(PageMemoryImplNoLoadTest.class);
-        suite.addTestSuite(PageMemoryNoStoreLeakTest.class);
-        suite.addTestSuite(IndexStoragePageMemoryImplTest.class);
-        suite.addTestSuite(PageMemoryImplTest.class);
+//        suite.addTestSuite(PageMemoryImplNoLoadTest.class);
+//        suite.addTestSuite(PageMemoryNoStoreLeakTest.class);
+//        suite.addTestSuite(IndexStoragePageMemoryImplTest.class);
+//        suite.addTestSuite(PageMemoryImplTest.class);
         //suite.addTestSuite(PageIdDistributionTest.class);
         //suite.addTestSuite(TrackingPageIOTest.class);
 
         // BTree tests with store page memory.
-        suite.addTestSuite(BPlusTreePageMemoryImplTest.class);
-        suite.addTestSuite(BPlusTreeReuseListPageMemoryImplTest.class);
+//        suite.addTestSuite(BPlusTreePageMemoryImplTest.class);
+//        suite.addTestSuite(BPlusTreeReuseListPageMemoryImplTest.class);
 
-        suite.addTestSuite(SegmentedRingByteBufferTest.class);
+//        suite.addTestSuite(SegmentedRingByteBufferTest.class);
 
         // Write throttling
-        suite.addTestSuite(PagesWriteThrottleSmokeTest.class);
+//        suite.addTestSuite(PagesWriteThrottleSmokeTest.class);
 
         // Metrics
-        suite.addTestSuite(FillFactorMetricTest.class);
+//        suite.addTestSuite(FillFactorMetricTest.class);
 
         // WAL delta consistency
-        suite.addTestSuite(CpTriggeredWalDeltaConsistencyTest.class);
-        suite.addTestSuite(ExplicitWalDeltaConsistencyTest.class);
-        suite.addTestSuite(SysPropWalDeltaConsistencyTest.class);
+//        suite.addTestSuite(CpTriggeredWalDeltaConsistencyTest.class);
+//        suite.addTestSuite(ExplicitWalDeltaConsistencyTest.class);
+//        suite.addTestSuite(SysPropWalDeltaConsistencyTest.class);
 
         return suite;
     }
