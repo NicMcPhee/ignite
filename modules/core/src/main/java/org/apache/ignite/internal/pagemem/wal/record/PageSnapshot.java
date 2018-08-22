@@ -92,7 +92,7 @@ public class PageSnapshot extends WALRecord implements WalRecordCacheGroupAware{
                 + "],\nsuper = ["
                 + super.toString() + "]]";
         }
-        catch (IgniteCheckedException ignored) {
+        catch (Throwable ignored) {
             return "Error during call'toString' of PageSnapshot [fullPageId=" + fullPageId() +
                 ", pageData = " + Arrays.toString(pageData) + ", super=" + super.toString() + "]";
         }
