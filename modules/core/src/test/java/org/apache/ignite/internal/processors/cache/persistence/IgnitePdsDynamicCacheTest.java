@@ -32,6 +32,7 @@ import org.apache.ignite.configuration.DataRegionConfiguration;
 import org.apache.ignite.configuration.DataStorageConfiguration;
 import org.apache.ignite.configuration.IgniteConfiguration;
 import org.apache.ignite.configuration.WALMode;
+import org.apache.ignite.internal.processors.cache.persistence.wal.FileWriteAheadLogManager;
 import org.apache.ignite.internal.processors.database.IgniteDbDynamicCacheSelfTest;
 import org.apache.ignite.internal.util.typedef.internal.U;
 
@@ -79,6 +80,8 @@ public class IgnitePdsDynamicCacheTest extends IgniteDbDynamicCacheSelfTest {
         System.clearProperty(GridCacheDatabaseSharedManager.IGNITE_PDS_CHECKPOINT_TEST_SKIP_SYNC);
 
         cleanPersistenceDir();
+
+        FileWriteAheadLogManager.verbose = false;
     }
 
     /**
@@ -116,6 +119,9 @@ public class IgnitePdsDynamicCacheTest extends IgniteDbDynamicCacheSelfTest {
 
         ignite.createCache(ccfg1);
         ignite.createCache(ccfg2);
+
+        FileWriteAheadLogManager.verbose = true;
+
         ignite.createCache(ccfg3).put(2, 3);
 
         int iterations = 20;

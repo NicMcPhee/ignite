@@ -131,6 +131,7 @@ import org.apache.ignite.internal.processors.cache.persistence.snapshot.Snapshot
 import org.apache.ignite.internal.processors.cache.persistence.tree.io.PageIO;
 import org.apache.ignite.internal.processors.cache.persistence.tree.io.PagePartitionMetaIO;
 import org.apache.ignite.internal.processors.cache.persistence.wal.FileWALPointer;
+import org.apache.ignite.internal.processors.cache.persistence.wal.FileWriteAheadLogManager;
 import org.apache.ignite.internal.processors.cache.persistence.wal.crc.IgniteDataIntegrityViolationException;
 import org.apache.ignite.internal.processors.cache.persistence.wal.crc.PureJavaCrc32;
 import org.apache.ignite.internal.processors.port.GridPortRecord;
@@ -1936,6 +1937,9 @@ public class GridCacheDatabaseSharedManager extends IgniteCacheDatabaseSharedMan
                 if (rec == null)
                     break;
 
+                if (FileWriteAheadLogManager.verbose)
+                    log.info("ON RESTORE: " + rec);
+
                 switch (rec.type()) {
                     case PAGE_RECORD:
                         if (restoreBinaryState.needApplyBinaryUpdate()) {
@@ -2214,6 +2218,9 @@ public class GridCacheDatabaseSharedManager extends IgniteCacheDatabaseSharedMan
 
                 if (rec == null)
                     break;
+
+                if (FileWriteAheadLogManager.verbose)
+                    log.info("LAST UPDATE: " + rec);
 
                 switch (rec.type()) {
                     case DATA_RECORD:

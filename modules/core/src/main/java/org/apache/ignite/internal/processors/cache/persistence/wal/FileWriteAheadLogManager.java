@@ -360,6 +360,8 @@ public class FileWriteAheadLogManager extends GridCacheSharedManagerAdapter impl
     /** Wal segment sync worker. */
     private WalSegmentSyncer walSegmentSyncWorker;
 
+    public  static volatile boolean verbose = false;
+
     /**
      * @param ctx Kernal context.
      */
@@ -747,6 +749,9 @@ public class FileWriteAheadLogManager extends GridCacheSharedManagerAdapter impl
     @Override public WALPointer log(WALRecord rec) throws IgniteCheckedException, StorageException {
         if (serializer == null || mode == WALMode.NONE)
             return null;
+
+        if (verbose)
+            log.info("Writing WAL: " + rec);
 
         FileWriteHandle currWrHandle = currentHandle();
 
